@@ -1,7 +1,7 @@
-GCC			=	@gcc -Wall -Werror -Wextra
+GCC			=	gcc -Wall -Werror -Wextra
 LIB 		=
 NAME 		=	philo
-SRC 		= 	$(addprefix srcs/, main.c)
+SRC 		= 	$(addprefix srcs/, main.c arg.c utils.c)
 HEADER 		=	$(addprefix includes/, philo.h)
 OBJ 		=	$(SRC:.c=.o)
 COM_STRING 	=	"Compiling"
@@ -16,15 +16,10 @@ $(NAME): $(OBJ)
 	$(GCC) -o $(NAME) $(LIB) $(OBJ)
 	@printf "%b" "\033[0;32m $(NAME) is done !$(NO_COLOR)\n"
 
-
-bonus: $(OBJBONUS)
-	$(GCC) -o $(NAME) $(LIB) $(OBJBONUS)
-	@printf "%b" "\033[0;32m $(NAME) is done !$(NO_COLOR)\n"
-
-%.o: %.c $(HEADER) $(SRC)
+%.o: %.c $(HEADER)
 	@printf "%b" "\033c";
 	@printf "%b" "$(COM_STRING) $(OBJ_COLOR)$(@)$(NO_COLOR)\n";
-	$(GCC) -o $@ -c $< -I $(HEADER)
+	$(GCC) -o $@ -c $< -Iincludes/
 
 clean:
 	@rm -f $(OBJ)
