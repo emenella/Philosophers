@@ -1,47 +1,37 @@
-#include "philo.h"
-
-int	ft_isdigit(char c)
+void	ft_usleep(long int time_in_ms)
 {
-	if (c <= '9' && c >= '0')
-		return (1);
-	return (0);
-}
+	long int	start_time;
 
-void	spacejump(int *i, const char *nptr, int *j)
-{
-	while ((nptr[*i] >= 9 && nptr[*i] <= 13) || nptr[*i] == 32)
-		*i += 1;
-	*j = *i;
-}
-
-void	signjump(int *i, const char *nptr, int *minuscount)
-{
-	if (nptr[*i] == '-' || nptr[*i] == '+')
-	{
-		if (nptr[*i] == '-')
-			*minuscount = 1;
-		*i += 1;
-	}
+	start_time = 0;
+	start_time = actual_time();
+	while ((actual_time() - start_time) < time_in_ms)
+		usleep(time_in_ms / 10);
 }
 
 int	ft_atoi(const char *nptr)
 {
-	int	i;
-	int	j;
-	int	minuscount;
-	int	result;
+	int		i;
+	long	sum;
+
+	sum = 0;
+	i = -1;
+	while (nptr[++i])
+		sum = (sum * 10) + (nptr[i] - 48);
+	return (sum);
+}
+
+int	check_arg(int argc, char **arg)
+{
+	int i;
+	int j;
 
 	i = 0;
-	minuscount = 0;
-	result = 0;
-	spacejump(&i, nptr, &j);
-	signjump(&i, nptr, &minuscount);
-	while (ft_isdigit(nptr[i]))
+	while (++i < argc)
 	{
-		result *= 10;
-		result += nptr[i++] - 48;
+		j = -1;
+		while (arg[i][++j])
+			if (arg[i][j] < '0' || arg[i][j] > '9')
+				return (0);
 	}
-	if (minuscount == 1)
-		result = -result;
-	return (result);
+	return (1);
 }
