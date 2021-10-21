@@ -36,6 +36,7 @@ int	init_philo(t_p *p)
 		p->philo[i].ms_eat = p->arg.start_time;
 		p->philo[i].nb_eat = 0;
 		p->philo[i].finish = 0;
+		p->philo[i].p_arg = &p->arg;
 		p->philo[i].right_fork = NULL;
 		pthread_mutex_init(&p->philo[i].left_fork, NULL);
 		if (p->arg.total == 1)

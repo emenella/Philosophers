@@ -8,6 +8,18 @@ void	ft_usleep(long int time_in_ms)
 		usleep(time_in_ms / 10);
 }
 
+long int	actual_time(void)
+{
+	long int			time;
+	struct timeval		current_time;
+
+	time = 0;
+	if (gettimeofday(&current_time, NULL) == -1)
+		ft_exit("Gettimeofday returned -1");
+	time = (current_time.tv_sec * 1000) + (current_time.tv_usec / 1000);
+	return (time);
+}
+
 int	ft_atoi(const char *nptr)
 {
 	int		i;
@@ -34,4 +46,10 @@ int	check_arg(int argc, char **arg)
 				return (0);
 	}
 	return (1);
+}
+
+int ft_exit(char* str)
+{
+	printf("Error: %s\n", str);
+	return (0);
 }

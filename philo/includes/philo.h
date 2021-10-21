@@ -1,7 +1,9 @@
 #ifndef PHILO_H
 # define PHILO_H
-# include <stdlib.h>
 # include <stdio.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include <sys/time.h>
 # include <pthread.h>
 
  typedef	struct	s_arg
@@ -13,6 +15,9 @@
 	int				m_eat;
 	long int		start_time;
 	pthread_mutex_t	write_mutex;
+	pthread_mutex_t	dead;
+	pthread_mutex_t	time_eat;
+	pthread_mutex_t	finish;
 	int				nb_philo_finish;
 	int				stop;
 }	t_arg;
@@ -36,9 +41,16 @@ typedef	struct	s_p
 	t_arg	arg;
 }t_p;
 
-void	ft_usleep(long int time_in_ms);
-int		ft_atoi(const char *nptr);
-int		parse_arg(t_p *p, int argc, char **arg);
-int		init_philo(t_p *p);
+void		ft_usleep(long int time_in_ms);
+int			ft_atoi(const char *nptr);
+int			parse_arg(t_p *p, int argc, char **arg);
+int			init_philo(t_p *p);
+long int	actual_time(void);
+int			ft_exit(char* str);
+int			check_death(t_philo *p, int i);
+void		philo_routine(void *data);
+void		philo_eat(t_philo *p);
+void		philo_sleep_think(t_philo *p);
+void		philo_write(char *str, t_philo *p);
 
 #endif
