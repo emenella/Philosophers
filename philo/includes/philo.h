@@ -52,5 +52,14 @@ void		philo_routine(void *data);
 void		philo_eat(t_philo *p);
 void		philo_sleep_think(t_philo *p);
 void		philo_write(char *str, t_philo *p);
+void		philo_routine(void *data);
+int			check_death(t_philo *p, int i);
+void		*is_dead(void	*data);
+void		*thread(void *data);
+void		stop(t_p *p);
+void		init_mutex(t_p *p);
+int			create_thread(t_p *p);
+int			check_death2(t_p *p);
+int			check_arg(int argc, char **arg);
 
 #endif

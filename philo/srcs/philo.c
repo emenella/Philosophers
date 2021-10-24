@@ -1,4 +1,4 @@
-#include "philo.h"
+#include "../includes/philo.h"
 
 void philo_write(char *str, t_philo *p)
 {
@@ -33,8 +33,10 @@ void philo_eat(t_philo *p)
 	pthread_mutex_lock(p->right_fork);
 	philo_write("has taken a fork", p);
 	philo_write("is eating", p);
+	p->ms_eat = actual_time();
 	pthread_mutex_unlock(&p->left_fork);
 	pthread_mutex_unlock(p->right_fork);
+	ft_usleep(p->p_arg->eat);
 	p->nb_eat++;
 }
 
@@ -43,11 +45,8 @@ void philo_routine(void *data)
 	t_philo *p;
 
 	p = (t_philo*) data;
-	while (!p->finish)
-	{
-		philo_eat(p);
-		philo_sleep_think(p);
-	}
+	philo_eat(p);
+	philo_sleep_think(p);
 }
 
 int	check_death(t_philo *p, int i)

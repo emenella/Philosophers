@@ -1,3 +1,5 @@
+#include "../includes/philo.h"
+
 void	ft_usleep(long int time_in_ms)
 {
 	long int	start_time;

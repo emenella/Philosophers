@@ -1,7 +1,7 @@
-GCC			=	gcc -Wall -Werror -Wextra
+GCC			=	gcc -Wall -Werror -Wextra -pthread -lpthread
 LIB 		=
 NAME 		=	philo
-SRC 		= 	$(addprefix srcs/, main.c arg.c utils.c)
+SRC 		= 	$(addprefix srcs/, main.c philo.c struct.c thread.c utils.c)
 HEADER 		=	$(addprefix includes/, philo.h)
 OBJ 		=	$(SRC:.c=.o)
 COM_STRING 	=	"Compiling"
