@@ -12,8 +12,6 @@ void	*thread(void *data)
 		pthread_create(&p->thread_death_id, NULL, is_dead, data);
 		philo_routine(p);
 		pthread_detach(p->thread_death_id);
-		pthread_mutex_lock(&p->p_arg->write_mutex);
-		pthread_mutex_unlock(&p->p_arg->write_mutex);
 		if ((int)p->nb_eat == p->p_arg->m_eat)
 		{
 			pthread_mutex_lock(&p->p_arg->finish);
