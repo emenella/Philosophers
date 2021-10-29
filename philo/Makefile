@@ -1,4 +1,4 @@
-GCC			=	gcc -Wall -Werror -Wextra -pthread -lpthread
+GCC			=	gcc -Wall -Werror -Wextra -pthread
 LIB 		=
 NAME 		=	philo
 SRC 		= 	$(addprefix srcs/, main.c philo.c struct.c thread.c utils.c)

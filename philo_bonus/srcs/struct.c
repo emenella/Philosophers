@@ -38,14 +38,6 @@ int	init_philo(t_p *p)
 		p->philo[i].nb_eat = 0;
 		p->philo[i].finish = 0;
 		p->philo[i].p_arg = &p->arg;
-		p->philo[i].right_fork = NULL;
-		pthread_mutex_init(&p->philo[i].left_fork, NULL);
-		if (p->arg.total == 1)
-			return (1);
-		if (i == p->arg.total - 1)
-			p->philo[i].right_fork = &p->philo[0].left_fork;
-		else
-			p->philo[i].right_fork = &p->philo[i + 1].left_fork;
 	}
 	return (1);
 }
