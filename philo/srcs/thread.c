@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   thread.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emenella <emenella@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/29 03:17:04 by emenella          #+#    #+#             */
+/*   Updated: 2021/10/29 03:18:26 by emenella         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/philo.h"
 
 void	*thread(void *data)
@@ -70,7 +82,8 @@ int	create_thread(t_p *p)
 	while (i < p->arg.total)
 	{
 		p->philo[i].p_arg = &p->arg;
-		if (pthread_create(&p->philo[i].thread_id, NULL, thread, &p->philo[i]) != 0)
+		if (pthread_create(&p->philo[i].thread_id, NULL, thread,
+				&p->philo[i]) != 0)
 			return (ft_exit("Pthread did not return 0\n"));
 		i++;
 	}

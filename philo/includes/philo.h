@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philo.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emenella <emenella@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/29 03:12:34 by emenella          #+#    #+#             */
+/*   Updated: 2021/10/29 03:13:27 by emenella         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PHILO_H
 # define PHILO_H
 # include <stdio.h>
@@ -6,7 +18,7 @@
 # include <sys/time.h>
 # include <pthread.h>
 
- typedef	struct	s_arg
+typedef struct s_arg
 {
 	int				total;
 	int				die;
@@ -22,7 +34,7 @@
 	int				stop;
 }	t_arg;
 
-typedef	struct	s_philo
+typedef struct s_philo
 {
 	int				id;
 	pthread_t		thread_id;
@@ -35,7 +47,7 @@ typedef	struct	s_philo
 	int				finish;
 }	t_philo;
 
-typedef	struct	s_p
+typedef struct s_p
 {
 	t_philo	*philo;
 	t_arg	arg;
@@ -46,7 +58,7 @@ int			ft_atoi(const char *nptr);
 int			parse_arg(t_p *p, int argc, char **arg);
 int			init_philo(t_p *p);
 long int	actual_time(void);
-int			ft_exit(char* str);
+int			ft_exit(char *str);
 int			check_death(t_philo *p, int i);
 void		philo_routine(void *data);
 void		philo_eat(t_philo *p);

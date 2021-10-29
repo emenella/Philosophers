@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philo.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emenella <emenella@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/29 03:16:02 by emenella          #+#    #+#             */
+/*   Updated: 2021/10/29 03:16:52 by emenella         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/philo.h"
 
-void philo_write(char *str, t_philo *p)
+void	philo_write(char *str, t_philo *p)
 {
-	long int time;
+	long int	time;
 
 	pthread_mutex_lock(&p->p_arg->write_mutex);
 	time = actual_time() - p->p_arg->start_time;
@@ -14,14 +26,14 @@ void philo_write(char *str, t_philo *p)
 	pthread_mutex_unlock(&p->p_arg->write_mutex);
 }
 
-void philo_sleep_think(t_philo *p)
+void	philo_sleep_think(t_philo *p)
 {
 	philo_write("is sleeping", p);
 	ft_usleep(p->p_arg->sleep);
 	philo_write("is think", p);
 }
 
-void philo_eat(t_philo *p)
+void	philo_eat(t_philo *p)
 {
 	pthread_mutex_lock(&p->left_fork);
 	philo_write("has taken a fork", p);
@@ -40,11 +52,11 @@ void philo_eat(t_philo *p)
 	p->nb_eat++;
 }
 
-void philo_routine(void *data)
+void	philo_routine(void *data)
 {
-	t_philo *p;
+	t_philo	*p;
 
-	p = (t_philo*) data;
+	p = (t_philo *) data;
 	philo_eat(p);
 	philo_sleep_think(p);
 }

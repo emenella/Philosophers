@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   struct.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emenella <emenella@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/29 03:21:07 by emenella          #+#    #+#             */
+/*   Updated: 2021/10/29 03:21:15 by emenella         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/philo.h"
 
 int	parse_arg(t_p *p, int argc, char **arg)
@@ -24,7 +36,7 @@ int	parse_arg(t_p *p, int argc, char **arg)
 
 int	init_philo(t_p *p)
 {
-	int i;
+	int	i;
 
 	p->arg.start_time = actual_time();
 	p->philo = malloc(sizeof(t_philo) * p->arg.total);

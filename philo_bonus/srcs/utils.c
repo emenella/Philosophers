@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emenella <emenella@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/29 03:21:37 by emenella          #+#    #+#             */
+/*   Updated: 2021/10/29 03:21:55 by emenella         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/philo.h"
 
 void	ft_usleep(long int time_in_ms)
@@ -36,8 +48,8 @@ int	ft_atoi(const char *nptr)
 
 int	check_arg(int argc, char **arg)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (++i < argc)
@@ -50,7 +62,7 @@ int	check_arg(int argc, char **arg)
 	return (1);
 }
 
-int ft_exit(char* str)
+int	ft_exit(char *str)
 {
 	printf("Error: %s\n", str);
 	return (0);

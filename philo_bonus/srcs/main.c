@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emenella <emenella@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/29 03:20:07 by emenella          #+#    #+#             */
+/*   Updated: 2021/10/29 03:22:33 by emenella         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/philo.h"
 
 void	stop(t_p *p)
@@ -31,7 +43,8 @@ int	init_sem(t_p *p)
 	p->arg.dead = sem_open("dead", O_CREAT, S_IRWXU, 1);
 	p->arg.finish = sem_open("finish", O_CREAT, S_IRWXU, 1);
 	p->arg.time_eat = sem_open("time_eat", O_CREAT, S_IRWXU, 1);
-	if (p->arg.fork <= 0 || p->arg.write <= 0 || p->arg.dead <= 0 || p->arg.finish <= 0 || p->arg.eat <= 0)
+	if (p->arg.fork <= 0 || p->arg.write <= 0 || p->arg.dead <= 0
+		|| p->arg.finish <= 0 || p->arg.eat <= 0)
 		return (ft_exit("Error init semphore"));
 	return (0);
 }
@@ -50,5 +63,5 @@ int	main(int argc, char **arg)
 		}
 		stop(&p);
 	}
-	return(0);
+	return (0);
 }
